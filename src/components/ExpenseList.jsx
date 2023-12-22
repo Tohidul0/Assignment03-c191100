@@ -27,6 +27,23 @@ function updateData(id,entries){
  }
 
 //  -------------------------------------------
+
+ //edited data updete when click edit button and give both pormt valueee  -------------------------------------------
+
+ function editData(id ,entries){
+  const name= prompt('income-catagory')
+  //console.log(name)
+  const amount =parseFloat(prompt('ammount'))
+  //console.log(amount)
+  
+  const editEntries = entries.filter((entry) =>entry.id === id)
+  editEntries[0].title=name;
+  editEntries[0].value=amount;
+  console.log(editEntries)
+  newEntries = entries.map((entry) =>entry)
+  setEntries(newEntries)
+  
+}
   
   return (
     <div>
@@ -48,6 +65,9 @@ function updateData(id,entries){
                   </span>
                   <span onClick={()=>updateData(item.id, entries)} className="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block">
                     Delete
+                  </span>
+                  <span onClick={()=>editData(item.id, entries)} className="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block">
+                    Edit
                   </span>
                 </div>
               </div>
