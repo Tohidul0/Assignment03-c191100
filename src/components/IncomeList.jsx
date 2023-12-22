@@ -1,7 +1,10 @@
 import { formatMoney } from "../utils/format-money";
 import { useEntries } from "../hooks/useEntries";
 
+
+// global variable------------------------
 let newEntries;
+
 
 
 export default function IncomeList() {
@@ -9,10 +12,10 @@ export default function IncomeList() {
 
 
 
-   const { entries,  setEntries } = useEntries();
+   const { entries, setEntries } = useEntries();
   // useEntries(newEntries)
 
-
+ // updatee data all when click delete button------------------------------------------
   function updateData(id,entries){
     console.log(id)
     document.getElementById(id).style.display="none";

@@ -1,9 +1,31 @@
 import { formatMoney } from "../utils/format-money";
 import { useEntries } from "../hooks/useEntries";
+let newEntries;
+
+
+
+
+
 
 export default function ExpenseList() {
-  const { entries } = useEntries();
+
+
+  const { entries, setEntries } = useEntries();
   const expenseEntries = entries.filter((entry) => entry.type === "expense");
+
+
+
+// updatee data all when click delete button------------------------------------------
+function updateData(id,entries){
+  console.log(id)
+  document.getElementById(id).style.display="none";
+   newEntries = entries.filter((entry) =>entry.id !== id)
+   setEntries(newEntries)
+   console.log(entries)
+ }
+
+//  -------------------------------------------
+  
   return (
     <div>
       <h2 className="border-b pb-2 font-medium text-red-600">Expense</h2>
@@ -15,14 +37,14 @@ export default function ExpenseList() {
       <ul id="expense-list" className="divide-y">
         {expenseEntries.map((item) => {
           return (
-            <li key={item.id} className="py-2.5">
+            <li id={item.id} key={item.id} className="py-2.5">
               <div className="group flex justify-between gap-2 text-sm">
                 <span>{item.title}</span>
                 <div>
                   <span className="text-red-600">
                     -{formatMoney(item.value)}
                   </span>
-                  <span className="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block">
+                  <span onClick={()=>updateData(item.id, entries)} className="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block">
                     Delete
                   </span>
                 </div>
