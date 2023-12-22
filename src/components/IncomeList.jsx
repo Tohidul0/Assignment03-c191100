@@ -1,8 +1,27 @@
 import { formatMoney } from "../utils/format-money";
 import { useEntries } from "../hooks/useEntries";
 
+let newEntries;
+
+
 export default function IncomeList() {
-  const { entries } = useEntries();
+ 
+
+
+
+   const { entries,  setEntries } = useEntries();
+  // useEntries(newEntries)
+
+
+  function updateData(id,entries){
+    console.log(id)
+    document.getElementById(id).style.display="none";
+     newEntries = entries.filter((entry) =>entry.id !== id)
+     setEntries(newEntries)
+     console.log(entries)
+   }
+
+  //  -------------------------------------------
   const incomeEntries = entries.filter((entry) => entry.type === "income");
 
   return (
@@ -15,7 +34,7 @@ export default function IncomeList() {
       <ul id="income-list" className="divide-y">
         {incomeEntries.map((income) => {
           return (
-            <li key={income.id} className="py-2.5">
+            <li id={income.id} key={income.id} className="py-2.5">
               <div className="group flex justify-between gap-2 text-sm">
                 <span>{income.title}</span>
 
@@ -23,7 +42,7 @@ export default function IncomeList() {
                   <span className="text-green-600">
                     {formatMoney(income.value)}
                   </span>
-                  <span className="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block">
+                  <span onClick={()=>updateData(income.id, entries)} className="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block">
                     Delete
                   </span>
                 </div>

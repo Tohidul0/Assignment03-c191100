@@ -2,7 +2,13 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useEntries } from "../hooks/useEntries";
 
+
+
 export default function AddEntry() {
+
+ 
+
+
   const { entries, setEntries } = useEntries();
 
   const [type, setType] = useState("income");
