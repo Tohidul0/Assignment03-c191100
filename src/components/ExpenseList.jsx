@@ -1,5 +1,7 @@
 import { formatMoney } from "../utils/format-money";
 import { useEntries } from "../hooks/useEntries";
+
+//global variable----------------------------------
 let newEntries;
 
 
