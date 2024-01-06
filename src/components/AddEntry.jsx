@@ -47,6 +47,27 @@ export default function AddEntry() {
             <option value="expense">-</option>
           </select>
 
+
+
+          <select
+            id="type"
+            name="type"
+            className="block w-20 shrink-0 rounded-md border-0 px-3 py-1.5 bg-orange-700 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            value={type}
+            onChange={(e) => {
+              setType(e.target.value);
+            }}
+          >
+            <option value="income">+</option>
+            <option value="expense">-</option>
+            <option value="grocery">Grocery</option>
+          </select>
+
+
+
+
+
+
           <input
             type="text"
             name="title"

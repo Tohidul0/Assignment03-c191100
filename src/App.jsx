@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Listing from "./components/Listing";
 import { EntriesProvider } from "./context/EntriesContext";
 
-// akil added--------------------------------
+// Tohidul alam akil added--------------------------------
 // function updateData(id){
 //   console.log(id)
 //   document.getElementById(id).style.display="none";
